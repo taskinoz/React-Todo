@@ -2,6 +2,14 @@ import './App.css';
 import {Container, Row, Col, Form, Button} from 'react-bootstrap';
 import React, {useState} from 'react';
 
+function randChar(s) {
+  let e = "";
+  for (var i = 0; i < s; i++) {
+    e += String.fromCharCode(65 + Math.floor(Math.random() * 26));
+  }
+  return e;
+}
+
 const ToDoList = (
   list
 ) => {
@@ -16,6 +24,8 @@ function App() {
   const [list, updateList] = useState({});
   const [input, updateInput] = useState({ val: ""});
   function addtolist(e) {
+    let newList = list
+    
     //updateList()
   }
   return (
@@ -36,7 +46,7 @@ function App() {
               value={input.val}
               onChange={e => updateInput({ val: e.target.value })}
             />
-            <Button onClick={addtolist}>Add</Button>
+            <Button onClick={() => addtolist(input)}>Add</Button>
           </Col>
         </Row>
       </Container>
