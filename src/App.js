@@ -17,7 +17,13 @@ function App() {
 
   const updateList = ( data, remove = false ) => {
     let newList = {...list};
-    
+    if (remove) {
+      delete newList[data]
+    }
+    else {
+      newList = {...newList, ...data}
+    }
+    setList(newList)
   }
 
   return (
@@ -30,6 +36,7 @@ function App() {
           <Col>
             <ToDoList 
               list={list}
+              updateList={updateList}
             />
           </Col>
           <Col>
