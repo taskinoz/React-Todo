@@ -1,10 +1,11 @@
 const ToDoList = ({
-    list
+    list,
+    updateList,
 }) => {
   return (
-    <>
-      {JSON.stringify(list)}
-    </>
+    (Object.keys(list)).map(item =>
+      <p>{list[item]} <span onClick={() => updateList(item,true)}>x</span></p>  
+    )
   );
 }
 
