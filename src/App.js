@@ -1,5 +1,6 @@
 import './App.css';
 import {Container, Row, Col } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {useState} from 'react';
 import ToDoInput from './Components/Input';
 import ToDoList from './Components/List';
