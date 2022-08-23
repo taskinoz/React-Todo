@@ -13,15 +13,16 @@ const randChar = (s) => {
 }
 
 function App() {
-  const [list, setList] = useState({});
+  const [list, setList] = useState([]);
 
-  const updateList = ( data, remove = false ) => {
-    let newList = {...list};
-    if (remove) {
-      delete newList[data]
+  const updateList = ( data, index, remove = false, checked = null) => {
+    let newList = [...list];
+    if (remove) newList.splice(index, remove);
+    if (!remove && checked===null) {
+      newList.splice(index, remove, data);
     }
-    else {
-      newList = {...newList, ...data}
+    if (!remove && checked!==null) {
+      newList[index].checked = checked;
     }
     setList(newList)
   }
