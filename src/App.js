@@ -32,10 +32,10 @@ function App() {
     <div className="App">
       <Container>
         <Row>
-          <Col>
+          <Col md={12}>
             <h1>ToDo</h1>
           </Col>
-          <Col>
+          <Col md={12}>
             <ToDoList 
               list={list}
               updateList={updateList}

@@ -8,7 +8,8 @@ const List = styled.div`
   .list-item {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    //justify-content: center;
+    width: 100%;
   }
 `
 
@@ -25,25 +26,28 @@ const ToDoList = ({
 
   return (
     <List>
-      {list === 0 && 
+      {list.length === 0 && 
         <div className="empty">
           <p>List Empty</p>
         </div>
       }
       {list.length > 0 && list.map((item, index) =>
         <div className="list-item">
-          <ListChecked
-            type='checkbox'
-            label={item.value}
-            onChange={(e) => updateList(item, index, false, e.target.checked)}
-            isChecked={item.checked}
-          />
-          <span 
-            className="ml-3"
-            onClick={() => updateList(item,index,true)}
-          >
-            <FontAwesomeIcon icon={faTimes} />
-          </span>
+          <Form.Group className="w-100">
+            <ListChecked
+              type='checkbox'
+              label={item.value}
+              onChange={(e) => updateList(item, index, false, e.target.checked)}
+              isChecked={item.checked}
+            />
+            <span
+              //className="ml-3"
+              onClick={() => updateList(item, index, true)}
+            >
+              <FontAwesomeIcon icon={faTimes} />
+            </span>
+          </Form.Group>
+          
         </div>  
       )}
     </List>
