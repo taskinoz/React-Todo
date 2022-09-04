@@ -50,9 +50,12 @@ function App() {
   }
 
   useEffect(() => {
-    if (hash) {
+    if ( hash && hash.slice(-1) === "=" ) {
       let newlist = JSON.parse(atob(hash.split("#")[1]));
-      setList(newlist);
+        setList(newlist);
+    }
+    else if (hash) {
+      window.location.href = "/";
     }
     else {
       loadList();
