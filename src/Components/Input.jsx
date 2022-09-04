@@ -1,5 +1,32 @@
 import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import styled from 'styled-components';
+
+const Input = styled(Form.Control)`
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    font-size: 20px;
+    border-radius: 0;
+`
+
+const Buttons = styled.div`
+    margin: 20px 0;
+    width: 100%;
+    button {
+        width: 50%;
+        border-radius: 0;
+        &:first-child {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            border-right: 1px #043a89 solid;
+        }
+        &:last-child {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            border-left: 1px #043a89 solid;
+        }
+    }
+`
 
 const ToDoInput = ({
     list,
@@ -18,15 +45,23 @@ const ToDoInput = ({
         }
     }
 
+    const shareLink = () => {
+
+    }
+
     return (
         <>
-            <Form.Control
+            <Input
                 placeholder='e.g. Do the dishes'
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
             />
-            <Button onClick={handleKeyDown}>Add</Button>
+            <Buttons>
+                <Button onClick={handleKeyDown}>Add</Button>
+                <Button onClick={shareLink}>Share</Button>
+            </Buttons>
+            
         </>
     );
 }
