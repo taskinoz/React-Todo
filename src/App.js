@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ToDoInput from './Components/Input';
 import ToDoList from './Components/List';
 import { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 
 const randChar = (s) => {
   let e = "";
@@ -50,6 +51,11 @@ function App() {
 
   return (
     <div className="App">
+      <Helmet>
+        <title>
+          {list.length > 0 ? `You have (${list.length}) item${list.length > 1 ? "'s" : ""}` : 'ToDo List'}
+        </title>
+      </Helmet>
       <Container>
         <Row>
           <Col md={12}>
