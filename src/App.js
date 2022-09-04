@@ -53,7 +53,7 @@ function App() {
     <div className="App">
       <Helmet>
         <title>
-          {list.length > 0 ? `You have (${list.length}) item${list.length > 1 ? "'s" : ""}` : 'ToDo List'}
+          {list.length > 0 ? `You have (${list.length}) item${list.length > 1 ? "'s" : ""} on you ToDo List` : 'ToDo List'}
         </title>
       </Helmet>
       <Container>
