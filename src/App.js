@@ -15,6 +15,7 @@ const randChar = (s) => {
 }
 
 function App() {
+  const [hash, setHash] = useState(window.location.hash);
   const [list, setList] = useState([]);
 
   const saveList = (data) => {
@@ -42,11 +43,20 @@ function App() {
       newList[index].checked = checked;
     }
     setList(newList)
-    saveList(newList);
+    if (!hash){
+      saveList(newList);
+    }
+    
   }
 
   useEffect(() => {
-    loadList();
+    if (hash) {
+      let newlist = JSON.parse(atob(hash.split("#")[1]));
+      setList(newlist);
+    }
+    else {
+      loadList();
+    }
   },[])
 
   return (

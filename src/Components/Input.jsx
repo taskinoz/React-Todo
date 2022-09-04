@@ -46,7 +46,7 @@ const ToDoInput = ({
     }
 
     const shareLink = () => {
-
+        window.location.href = "#"+btoa(JSON.stringify(list))
     }
 
     return (
