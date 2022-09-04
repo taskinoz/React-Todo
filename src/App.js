@@ -1,9 +1,9 @@
 import './App.scss';
 import {Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, {useState} from 'react';
 import ToDoInput from './Components/Input';
 import ToDoList from './Components/List';
+import { useState, useEffect } from 'react';
 
 const randChar = (s) => {
   let e = "";
@@ -16,6 +16,21 @@ const randChar = (s) => {
 function App() {
   const [list, setList] = useState([]);
 
+  const saveList = (data) => {
+    if (list.length > 0){
+        localStorage.setItem('List', JSON.stringify(data));
+    }
+    console.log("Saved");
+    localStorage.setItem('List', JSON.stringify(data));
+  }
+
+  const loadList = () => {
+      let getList = JSON.parse(localStorage.getItem('List'));
+      if (getList) {
+        setList(getList);
+      }
+  }
+
   const updateList = ( data, index, remove = false, checked = null) => {
     let newList = [...list];
     if (remove) newList.splice(index, remove);
@@ -26,7 +41,12 @@ function App() {
       newList[index].checked = checked;
     }
     setList(newList)
+    saveList(newList);
   }
+
+  useEffect(() => {
+    loadList();
+  },[])
 
   return (
     <div className="App">
