@@ -6,14 +6,6 @@ import ToDoList from './Components/List';
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
-const randChar = (s) => {
-  let e = "";
-  for (var i = 0; i < s; i++) {
-    e += String.fromCharCode(65 + Math.floor(Math.random() * 26));
-  }
-  return e;
-}
-
 function App() {
   const [hash, setHash] = useState(window.location.hash);
   const [list, setList] = useState([]);
@@ -60,7 +52,7 @@ function App() {
     else {
       loadList();
     }
-  },[])
+  })
 
   return (
     <div className="App">
