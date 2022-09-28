@@ -52,7 +52,7 @@ function App() {
     else {
       loadList();
     }
-  })
+  },[hash])
 
   return (
     <div className="App">
