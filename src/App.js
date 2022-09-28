@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
 function App() {
-  const [hash, setHash] = useState(window.location.hash);
+  const hash = window.location.hash;
   const [list, setList] = useState([]);
 
   const saveList = (data) => {
